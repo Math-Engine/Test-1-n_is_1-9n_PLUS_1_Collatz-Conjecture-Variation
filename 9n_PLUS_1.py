@@ -30,7 +30,7 @@ is_loop = False
 is_end = False
 for i in range(n_sequence + 1, n_sequence + number_of_executions + 1):
   print(temp, end="\n")
-  if (int(temp[-1])%2 == 1):
+  if (int(str(temp)[-1])%2 == 1):
     temp = (temp * 9) + 1
   else:
     temp = dividing_2(temp)
