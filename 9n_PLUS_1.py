@@ -5,6 +5,16 @@ import json
 
 sys.set_int_max_str_digits(2147483647)
 
+def dividing_2(n):
+  if (len(str(n)) < 16):
+    return n//2
+  n = str(n)
+  r = 0
+  for i in range(len(n) - 1):
+    r = r + int(str(int(n[i] + "0")//2) + ("0" * (len(n) - 2 - i)))
+  r = r + int(n[-1])//2
+  return r
+
 number_of_executions = int(sys.argv[1])
 section_range = int(sys.argv[2])
 num = int(open('n.txt', 'r'))
@@ -20,14 +30,10 @@ is_loop = False
 is_end = False
 for i in range(n_sequence + 1, n_sequence + number_of_executions + 1):
   print(temp, end="\n")
-  if (temp%2 == 1):
+  if (int(temp[-1])%2 == 1):
     temp = (temp * 9) + 1
   else:
-    temp = temp/2
-    if "e" in str(temp):
-      temp = int(str(temp)[0] + str(temp)[(str(temp).find(".") + 1):str(temp).find("e")] + ("0" * (int(str(temp)[((str(temp).find("+")) + 1):(len(str(temp)) + 1)]) - len(str(temp)[(str(temp).find(".") + 1):str(temp).find("e")]))))
-    elif ".0" in str(temp):
-      temp = math.ceil(temp)
+    temp = dividing_2(temp)
   if temp in Hailstone_Num:
     is_loop = True
     Hailstone_Num.append(temp)
