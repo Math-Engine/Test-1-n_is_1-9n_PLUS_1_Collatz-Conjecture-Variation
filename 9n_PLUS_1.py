@@ -26,7 +26,7 @@ with open('maximum.json', 'r') as file:
 with open('HailstoneArray.json', 'r') as file:
     HailstoneArray = json.load(file)
 
-os.system(f'echo "Number: {num} <br> 계산할 항의 개수: {number_of_executions} ( {n_sequence + 1} ~ {n_sequence + number_of_executions} ) <br> 구간 범위: {section_range} <br> <hr>" >> $GITHUB_STEP_SUMMARY')
+os.system(f'echo "Number: {num} <br> 계산할 항의 개수: {number_of_executions} ( {n_sequence + 1} ~ {n_sequence + number_of_executions} ) <br> <hr>" >> $GITHUB_STEP_SUMMARY')
 
 Hailstone_Num = [num]
 temp = num
