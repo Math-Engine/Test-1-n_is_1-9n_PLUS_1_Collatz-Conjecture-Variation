@@ -72,7 +72,7 @@ with open('n_sequence.txt', 'w') as file:
 HailstoneArray.extend(new_Hailstone_Num_array)
 
 with open('HailstoneArray.json', 'w') as file:
-    file.write(HailstoneArray)
+    json.dump(HailstoneArray, file)
 
 if (max(Hailstone_Num) > int(maximum["maximum"])):
   maximum["n_sequence"] = n_sequence + new_Hailstone_Num_array.index(max(Hailstone_Num)) + 1
