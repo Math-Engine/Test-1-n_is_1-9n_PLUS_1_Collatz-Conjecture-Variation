@@ -78,4 +78,4 @@ if (max(Hailstone_Num) > int(maximum["maximum"])):
   maximum["n_sequence"] = n_sequence + new_Hailstone_Num_array.index(max(Hailstone_Num)) + 1
   maximum["maximum"] = max(Hailstone_Num)
   with open('maximum.json', 'w') as file:
-    file.write(str(maximum))
+    json.dump(maximum, file)
