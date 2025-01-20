@@ -16,7 +16,7 @@ def dividing_2(n):
   return r
 
 number_of_executions = int(sys.argv[1])
-section_range = int(sys.argv[2])
+# section_range = int(sys.argv[2])
 num = int(open('n.txt', 'r'))
 n_sequence = int(open('n_sequence.txt', 'r'))
 with open('maximum.json', 'r') as file:
