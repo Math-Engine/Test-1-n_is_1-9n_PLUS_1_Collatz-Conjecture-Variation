@@ -57,7 +57,8 @@ for i in range(n_sequence + 1, n_sequence + number_of_executions + 1):
     Hailstone_Num.append(temp)
 print()
 
-new_Hailstone_Num_array = Hailstone_Num.pop(0)
+Hailstone_Num.pop(0)
+new_Hailstone_Num_array = Hailstone_Num
 
 if (is_end == False):
   os.system(f'echo "question:" >> $GITHUB_STEP_SUMMARY')
