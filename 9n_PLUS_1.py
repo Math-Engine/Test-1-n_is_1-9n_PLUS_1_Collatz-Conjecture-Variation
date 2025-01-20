@@ -67,7 +67,7 @@ with open('n.txt', 'w') as file:
     file.write(str(temp))
 
 with open('n_sequence.txt', 'w') as file:
-    file.write(str(n_sequence + number_of_executions + 1))
+    file.write(str(n_sequence + number_of_executions))
 
 HailstoneArray.extend(new_Hailstone_Num_array)
 
