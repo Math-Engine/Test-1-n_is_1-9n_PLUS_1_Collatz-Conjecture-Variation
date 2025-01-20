@@ -17,8 +17,10 @@ def dividing_2(n):
 
 number_of_executions = int(sys.argv[1])
 # section_range = int(sys.argv[2])
-num = int(open('n.txt', 'r'))
-n_sequence = int(open('n_sequence.txt', 'r'))
+with open('n.txt', 'r') as file:
+    num = int(file.read().strip())
+with open('n_sequence.txt', 'r') as file:
+    n_sequence = int(file.read().strip())
 with open('maximum.json', 'r') as file:
     maximum = json.load(file)
 with open('HailstoneArray.json', 'r') as file:
