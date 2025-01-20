@@ -19,8 +19,10 @@ number_of_executions = int(sys.argv[1])
 section_range = int(sys.argv[2])
 num = int(open('n.txt', 'r'))
 n_sequence = int(open('n_sequence.txt', 'r'))
-maximum = int(open('maximum.json', 'r'))
-max_and_min = int(open('max_and_min.json', 'r'))
+with open('maximum.json', 'r') as file:
+    maximum = json.load(file)
+with open('HailstoneArray.json', 'r') as file:
+    HailstoneArray = json.load(file)
 
 os.system(f'echo "Number: {num} <br> 계산할 항의 개수: {number_of_executions} ( {n_sequence + 1} ~ {n_sequence + number_of_executions} ) <br> 구간 범위: {section_range} <br> <hr>" >> $GITHUB_STEP_SUMMARY')
 
@@ -53,6 +55,8 @@ for i in range(n_sequence + 1, n_sequence + number_of_executions + 1):
     Hailstone_Num.append(temp)
 print()
 
+new_Hailstone_Num_array = Hailstone_Num.pop(0)
+
 if (is_end == False):
   os.system(f'echo "question:" >> $GITHUB_STEP_SUMMARY')
 
@@ -62,10 +66,13 @@ with open('n.txt', 'w') as file:
 with open('n_sequence.txt', 'w') as file:
     file.write(str(n_sequence + number_of_executions + 1))
 
-maximums_arr = []
-minimums_arr = []
-for j in range(0, math.ceil(len(Hailstone_Num)/section_range)):
-  
-  maximums_arr.append(max(Hailstone_Num[(section_range*j):(section_range*(j+1) - 1)]))
-  minimuns_arr.append(min(Hailstone_Num[(section_range*j):(section_range*(j+1) - 1)]))
-# os.system(f'echo "구간별 최솟값: {str(minimuns_arr)}" >> $GITHUB_STEP_SUMMARY')
+HailstoneArray.extend(new_Hailstone_Num_array)
+
+with open('HailstoneArray.json', 'w') as file:
+    file.write(HailstoneArray)
+
+if (max(Hailstone_Num) > int(maximum["maximum"])):
+  maximum["n_sequence"] = n_sequence + new_Hailstone_Num_array.index(max(Hailstone_Num)) + 1
+  maximum["maximum"] = max(Hailstone_Num)
+  with open('maximum.txt', 'w') as file:
+    file.write(str(maximum))
